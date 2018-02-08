@@ -1,0 +1,39 @@
+{
+  "entries":
+  [{
+        "infovar": "NewsCenter.Unwetter.Anzahl",
+        "gepic": "wetterwarnung.png",
+        "comparative": "1"
+  }, {
+        "infovar": "Muellstate.GelbetonneIn",
+        "lepic": "gelbetonne.png",
+        "comparative": "1"
+  }, {
+        "infovar": "Muellstate.RestmuellIn",
+        "lepic": "restmuell.png",
+        "comparative": "1"
+  }, {
+        "infovar": "Muellstate.BioabfallIn",
+        "lepic": "biotonne.png",
+        "comparative": "1"
+  }, {
+        "infovar": "Muellstate.PapiertonneIn",
+        "lepic": "papiertonne.png",
+        "comparative": "1"
+  }, {
+        "infovar": "Hauswirtschaft.Trockner_Status",
+        "ispic": "trockner.png",
+        "comparative": "on"
+  }, {
+        "infovar": "Hauswirtschaft.Waschmaschine_Status",
+        "ispic": "waschmaschine.png",
+        "comparative": "on"
+
+  }, {
+        "infovar": "Hauswirtschaft.Spuehlmaschine_Status",
+        "ispic": "spuehlmaschine.png",
+        "comparative": "on"
+  }]
+}
+
+

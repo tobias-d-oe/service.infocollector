@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+        <include name="ScriptInfoCollector">
+
+			<control type="group">
+				<left>700</left>
+				<top>1</top>
+                                <posx>535</posx>
+                                <align>right</align>
+			        <width>535</width>	
+
+
+				<control type="list" id="8100">
+
+                                        <animation effect="slide" start="0,0" end="35,0" time="0" condition="String.IsEqual(Container(8100).NumItems,10)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="85,0" time="0" condition="String.IsEqual(Container(8100).NumItems,9)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="135,0" time="0" condition="String.IsEqual(Container(8100).NumItems,8)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="185,0" time="0" condition="String.IsEqual(Container(8100).NumItems,7)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="235,0" time="0" condition="String.IsEqual(Container(8100).NumItems,6)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="285,0" time="0" condition="String.IsEqual(Container(8100).NumItems,5)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="335,0" time="0" condition="String.IsEqual(Container(8100).NumItems,4)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="385,0" time="0" condition="String.IsEqual(Container(8100).NumItems,3)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="435,0" time="0" condition="String.IsEqual(Container(8100).NumItems,2)">conditional</animation>
+                                        <animation effect="slide" start="0,0" end="485,0" time="0" condition="String.IsEqual(Container(8100).NumItems,1)">conditional</animation>
+					<left>0</left>
+					<top>1</top>
+					<width>535</width>
+					<height>40</height>
+					<viewtype label="535">list</viewtype>
+					<pagecontrol>-</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<orientation>Horizontal</orientation>
+					<itemlayout height="40" width="50">
+						<control type="image">
+							<left>10</left>
+							<top>0</top>
+							<width>35</width>
+							<height>35</height>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio>keep</aspectratio>
+ 						</control>
+					</itemlayout>
+					<focusedlayout height="40" width="50">
+						<control type="image">
+							<left>10</left>
+							<top>0</top>
+							<width>35</width>
+							<height>35</height>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+					</focusedlayout>
+					<content>plugin://service.infocollector/?methode=get_container&updater=$INFO[Window(Home).Property(InfoCollector.Updater)]</content>
+				</control>
+			</control>
+            </include>
+</includes>
+
+
