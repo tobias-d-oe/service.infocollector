@@ -1,0 +1,50 @@
+{
+  "entries":
+  [{
+        "infovar": "NewsCenter.Unwetter.Anzahl",
+        "gepic": "wetterwarnung.png",
+        "comparative": "1"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns1.png",
+        "comparative": "1"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns2.png",
+        "comparative": "2"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns3.png",
+        "comparative": "3"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns4.png",
+        "comparative": "4"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns5.png",
+        "comparative": "5"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns6.png",
+        "comparative": "6"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns7.png",
+        "comparative": "7"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns8.png",
+        "comparative": "8"
+  },{
+        "infovar": "SwitchTimerActiveItems",
+        "ispic": "kns9.png",
+        "comparative": "9"
+  }, {
+        "infovar": "FritzCallMon.InCall",
+        "ispic": "call.png",
+        "comparative": "true"
+  }]
+}
+
+
