@@ -74,20 +74,57 @@ else:
 
 
 
+writeLog('Run %s' % (methode), level=xbmc.LOGNOTICE)
 if methode=='get_container':
-  writeLog('ReOpen JSON File', level=xbmc.LOGDEBUG)
-  GetFile = '%s/infovars.json' % (__addonUserDataFolder__) 
+  writeLog('ReOpen JSON File', level=xbmc.LOGNOTICE)
+
+  ConfigReads_xbmc_skin=""
+  ConfigReads_home_skin=""
+  ConfigReads_user="" 
+  Entries=[]
+  #Entries2=[]
+  #Entries3=[] 
+  found_config=0
+  cur_skin=xbmc.getSkinDir()
+
+  skinconf_file=xbmc.translatePath('special://home/addons/'+cur_skin+'/infovars.json').decode('utf-8')
   try:
-      with open(GetFile, 'r') as toread:
-              ConfigReads=toread.read().rstrip('\n')
+      with open(skinconf_file, 'r') as toread:
+              ConfigReads_home_skin=toread.read().rstrip('\n')
+      writeLog('Open Config File: %s' % (skinconf_file), level=xbmc.LOGNOTICE)
+      allreads = json.loads(str(ConfigReads_home_skin))
+      Entries=allreads['entries']
+      found_config=1
   except:
-      writeLog('Could not open configfile infoarea.json', level=xbmc.LOGNOTICE)
+      pass
+    
+  skinconf_file=xbmc.translatePath('special://xbmc/addons/'+cur_skin+'/infovars.json').decode('utf-8')
+  try:
+      with open(skinconf_file, 'r') as toread:
+              ConfigReads_xbmc_skin=toread.read().rstrip('\n')
+      writeLog('Open Config File: %s' % (skinconf_file), level=xbmc.LOGNOTICE)
+      allreads = json.loads(str(ConfigReads_xbmc_skin))
+      Entries=Entries+allreads['entries']
+      found_config=1
+  except:
+      pass
   
-  allreads = json.loads(str(ConfigReads))
+  skinconf_file = '%s/infovars.json' % (__addonUserDataFolder__) 
+  try:
+      with open(skinconf_file, 'r') as toread:
+              ConfigReads_user=toread.read().rstrip('\n')
+      writeLog('Open Config File: %s' % (skinconf_file), level=xbmc.LOGNOTICE)
+      allreads = json.loads(str(ConfigReads_user))
+      Entries=Entries+allreads['entries']
+      #Entries3=allreads['entries']
+      found_config=1
+  except:
+      pass
   
-  
-  Entries=allreads['entries']
-  
+  if found_config == 0:
+      writeLog('Could not open a configfile. File infoarea.json not found.', level=xbmc.LOGNOTICE)
+ 
+#########################
 
   url='-'
   for Infovar in Entries:
@@ -189,7 +226,21 @@ if methode=='get_container':
         except:
           writeLog('Variable not proper set - NOT activating Item for %s' % (Var), level=xbmc.LOGDEBUG)
           pass
-  
+ 
+      # nepic -> if INFO-Variable is not comparative value 
+      if 'nepic' in Infovar:
+        writeLog('Checkmethode: nepic Compare: %s != %s' % (VarProperty,Infovar['comparative']), level=xbmc.LOGDEBUG)
+        try:
+          if WINDOW.getProperty(Var) != Infovar['comparative']:
+            writeLog('Activating Item for %s' % (Var), level=xbmc.LOGDEBUG)
+            li=item_create(Infovar['nepic'],Infovar['infovar'])
+            xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li)
+          else:
+            writeLog('NOT activating Item for %s' % (Var), level=xbmc.LOGDEBUG)
+        except:
+          writeLog('Variable not proper set - NOT activating Item for %s' % (Var), level=xbmc.LOGDEBUG)
+          pass
+ 
   xbmcplugin.endOfDirectory(addon_handle)
 
   writeLog('Check-Run finished' , level=xbmc.LOGDEBUG)
@@ -197,7 +248,6 @@ if methode=='get_container':
 
 elif methode=='refresh_container':
   writeLog('Updateing InfoCollector List', level=xbmc.LOGDEBUG)
-  WINDOW = xbmcgui.Window(10000)
 
   WINDOW.setProperty('InfoCollector.Updater',str(time.time()))
 

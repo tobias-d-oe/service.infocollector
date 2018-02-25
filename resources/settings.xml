@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="General">
+        <setting id="refresh" type="labelenum" label="Interval" values="30|60|90|120|180|300" default="30"/>
+    </category>
+</settings>

@@ -37,6 +37,9 @@ __path__ = __addon__.getAddonInfo('path')
 __LS__ = __addon__.getLocalizedString
 __icon__ = xbmc.translatePath(os.path.join(__path__, 'icon.png'))
 
+
+refreshcontent          = int(__addon__.getSetting('refresh')) 
+
 OSD = xbmcgui.Dialog()
 
 # Helpers #
@@ -59,9 +62,9 @@ class Starter():
     def start(self):
         monitor = MyMonitor()
         writeLog('Starting %s V.%s' % (__addonname__, __version__))
-        #notifyOSD('Starting INFO Collector','Service is now active', __icon__)
+        notifyOSD('Starting INFO Collector','Service is now active', __icon__)
         while not monitor.abortRequested():
-            if monitor.waitForAbort(120):
+            if monitor.waitForAbort(refreshcontent):
                 break
             writeLog('Updateing InfoCollector List (Service)', level=xbmc.LOGNOTICE)
 	    xbmc.executebuiltin('XBMC.RunScript(service.infocollector,"?methode=refresh_container")')
